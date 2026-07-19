@@ -1,0 +1,11 @@
+import numpy as np
+from numpy.typing import NDArray
+
+
+class Solution:
+
+    def softmax(self, z: NDArray[np.float64]) -> NDArray[np.float64]:
+        # z is a 1D NumPy array of logits
+        shifted = z - np.max(z) # numerical stability
+        exps = np.exp(shifted)
+        return np.round(exps / np.sum(exps), 4)
